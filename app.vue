@@ -64,7 +64,7 @@ const loading = ref(false)
 let debounceTimer: NodeJS.Timeout | null = null
 const DEBOUNCE_TIME = 100
 const MIN_CHARS = 2
-const API_URL = '/api/autocomplete'
+const API_BASE_URL = 'https://montoit-api.onrender.com/api/autocomplete'
 
 const handleSearch = () => {
   clearTimeout(debounceTimer!)
@@ -82,11 +82,10 @@ const handleSearch = () => {
 const fetchResults = async () => {
   loading.value = true
   try {
-    const response = await axios.get(API_URL, {
-      params: {
-        q: searchQuery.value
-      }
-    })
+    const corsProxy = 'https://api.allorigins.win/raw?url='
+    const fullUrl = `${corsProxy}${encodeURIComponent(API_BASE_URL)}?q=${encodeURIComponent(searchQuery.value)}`
+    
+    const response = await axios.get(fullUrl)
     
     const data = response.data
     
