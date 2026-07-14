@@ -1,0 +1,12 @@
+node_modules
+*.log
+.nuxt
+dist
+.env
+.DS_Store
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.cache
