@@ -82,10 +82,7 @@ const handleSearch = () => {
 const fetchResults = async () => {
   loading.value = true
   try {
-    const corsProxy = 'https://api.allorigins.win/raw?url='
-    const fullUrl = `${corsProxy}${encodeURIComponent(API_BASE_URL)}?q=${encodeURIComponent(searchQuery.value)}`
-    
-    const response = await axios.get(fullUrl)
+    const response = await axios.get(`${API_BASE_URL}?q=${encodeURIComponent(searchQuery.value)}`)
     
     const data = response.data
     
