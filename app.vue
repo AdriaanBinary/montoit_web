@@ -62,9 +62,9 @@ const searchQuery = ref('')
 const results = ref<SearchResult[]>([])
 const loading = ref(false)
 let debounceTimer: NodeJS.Timeout | null = null
-const DEBOUNCE_TIME = 500
+const DEBOUNCE_TIME = 100
 const MIN_CHARS = 2
-const API_URL = 'https://montoit-api.onrender.com/api/autocomplete'
+const API_URL = '/api/autocomplete'
 
 const handleSearch = () => {
   clearTimeout(debounceTimer!)
